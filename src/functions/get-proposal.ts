@@ -2,7 +2,7 @@ import { Context } from 'hono';
 import { FormattedProposal, Proposal } from '../types/proposal';
 
 export function formatProposal(proposal: Proposal): FormattedProposal {
-  // we use hash as id for the public facing part
+  // using hash as id for the public facing part
   // this allows us to use primary key integers internally in sqlite
   const formatted: FormattedProposal = {
     id: proposal.hash,

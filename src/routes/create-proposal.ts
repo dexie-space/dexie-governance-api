@@ -54,7 +54,7 @@ export async function createProposal(c: Context) {
 
     const proposal = await getProposal(c, meta.last_row_id);
 
-    // verify if holders count matches
+    // verify that holders count matches
     if (!proposal || proposal.votes.length !== holders.length) {
       // TODO: clear the proposal and choices (d1 does not support transactions yet)
       throw new Error('Failed to create proposal, voter count mismatch');

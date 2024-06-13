@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS gov_proposals (
   id integer PRIMARY KEY AUTOINCREMENT,
   title text NOT NULL,
   content text NOT NULL,
-  discussion_link text NOT NULL,
+  discussion_link text,
   hash text NOT NULL,
   start_height integer NOT NULL,
   end_height integer NOT NULL,

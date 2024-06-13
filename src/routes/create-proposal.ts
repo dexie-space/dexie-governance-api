@@ -7,7 +7,7 @@ import { verifySignature } from '../functions/verify-signature';
 export async function createProposal(c: Context) {
   const { title, choices, content, holders, start_height, end_height, discussion_link, pubkey, signature } = await c.req.json();
 
-  if (!title || !choices || !content || !holders || !start_height || !end_height || !discussion_link || !pubkey || !signature) {
+  if (!title || !choices || !content || !holders || !start_height || !end_height || !pubkey || !signature) {
     return c.json({ success: false, error: 'One or more required fields are missing' }, 400);
   }
 

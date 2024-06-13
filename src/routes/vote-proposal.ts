@@ -51,11 +51,11 @@ export async function voteProposal(c: Context) {
   // get updated vote
   const updated_vote = await c.env.DB.prepare(
     `select lower(hex(ph)) as ph,
-      amount / 1000.0 as amount,
-      choice,
-      lower(hex(signature)) AS sig,
-			lower(hex(pubkey)) AS pubkey
-			from gov_votes where proposal_id = ? and ph = unhex(?)`
+    amount / 1000.0 as amount,
+    choice,
+    lower(hex(signature)) AS sig,
+    lower(hex(pubkey)) AS pubkey
+    from gov_votes where proposal_id = ? and ph = unhex(?)`
   )
     .bind(proposal.id, vote.ph)
     .first();

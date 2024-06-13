@@ -9,9 +9,7 @@ mode = "smart"
 [vars]
 FULLNODE_RPC = "https://rpc.dexie.space"
 NAMESPACE = "" # eg. dexie
-
-# List of pubkeys that are allowed to create proposals (eg. dexie Core Team)
-TEAM_PUBKEYS = [""]
+TEAM_PUBKEYS = [""] # pubkeys that are allowed to create proposals (eg. dexie Core Team)
 
 [[d1_databases]]
 binding = "DB"
@@ -21,9 +19,7 @@ database_id = ""
 [env.testnet.vars]
 FULLNODE_RPC = "https://rpc-testnet.dexie.space"
 NAMESPACE = "" # eg. dexie-testnet
-
-# List of pubkeys that are allowed to create proposals (eg. dexie Core Team)
-TEAM_PUBKEYS = [""]
+TEAM_PUBKEYS = [""] # pubkeys that are allowed to create proposals (eg. dexie Core Team)
 
 [[env.testnet.d1_databases]]
 binding = "DB"

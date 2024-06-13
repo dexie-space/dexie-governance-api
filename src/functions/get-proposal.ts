@@ -12,6 +12,8 @@ export function formatProposal(proposal: Proposal): FormattedProposal {
     date_created: proposal.date_created,
     content: proposal.content,
     discussion_link: proposal.discussion_link,
+    deployer_pubkey: proposal.deployer_pubkey,
+    deployer_sig: proposal.deployer_sig,
     choices: proposal.choices,
     votes: proposal.votes,
   };
@@ -21,9 +23,10 @@ export function formatProposal(proposal: Proposal): FormattedProposal {
 
 export async function getProposal(c: Context, id_or_hash: any): Promise<Proposal | null> {
   const proposal = await c.env.DB.prepare(
-    `select *,
+    `select id, title, content, hash, start_height, end_height, discussion_link, date_created,
+    lower(hex(deployer_pubkey)) AS deployer_pubkey, lower(hex(deployer_signature)) AS deployer_sig,
     (select json_group_array(json_object('id', id, 'choice', choice))
-     from gov_choices WHERE proposal_id = gov_proposals.id order by id) as choices
+      from gov_choices WHERE proposal_id = gov_proposals.id order by id) as choices
     from gov_proposals
     where id = ? OR hash = ?`
   )

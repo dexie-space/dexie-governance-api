@@ -33,11 +33,11 @@ export async function createProposal(c: Context) {
     // create proposal
     const { meta } = await c.env.DB.prepare(
       `insert into gov_proposals
-      (title, content, hash, start_height, end_height, discussion_link, date_created)
+      (title, content, hash, start_height, end_height, discussion_link, date_created, deployer_pubkey, deployer_signature)
       values
-      (?, ?, ?, ?, ?, ?, datetime(?, 'unixepoch'))`
+      (?, ?, ?, ?, ?, ?, datetime(?, 'unixepoch'), unhex(?), unhex(?))`
     )
-      .bind(title, content, hash, start_height, end_height, discussion_link, record.block_record.timestamp)
+      .bind(title, content, hash, start_height, end_height, discussion_link, record.block_record.timestamp, pubkey, signature)
       .run();
 
     // add choices

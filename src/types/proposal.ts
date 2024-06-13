@@ -15,6 +15,8 @@ export interface Proposal {
   start_height: number;
   end_height: number;
   date_created: Date;
+  deployer_pubkey: string;
+  deployer_sig: string;
   choices: { id: number; choice: string }[];
   votes: Vote[];
 }
@@ -27,6 +29,8 @@ export interface FormattedProposal {
   start_height: number;
   end_height: number;
   date_created: Date;
+  deployer_pubkey: string;
+  deployer_sig: string;
   choices: { id: number; choice: string }[];
   votes: Vote[];
 }

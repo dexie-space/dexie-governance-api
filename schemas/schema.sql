@@ -7,7 +7,9 @@ CREATE TABLE IF NOT EXISTS gov_proposals (
   hash text NOT NULL,
   start_height integer NOT NULL,
   end_height integer NOT NULL,
-  date_created datetime DEFAULT CURRENT_TIMESTAMP
+  date_created datetime NOT NULL,
+  deployer_pubkey binary NOT NULL,
+  deployer_signature binary NOT NULL
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS gov_proposals_hash ON gov_proposals (hash);
